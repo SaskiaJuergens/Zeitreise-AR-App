@@ -1,0 +1,200 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.DefaultCompany.Zeitreise_App"
+4    android:installLocation="preferExternal"
+5    android:versionCode="1"
+6    android:versionName="0.1" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="25"
+9-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml
+10        android:targetSdkVersion="32" />
+10-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml
+11
+12    <supports-screens
+12-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:3-163
+13        android:anyDensity="true"
+13-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:135-160
+14        android:largeScreens="true"
+14-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:78-105
+15        android:normalScreens="true"
+15-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:49-77
+16        android:smallScreens="true"
+16-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:21-48
+17        android:xlargeScreens="true" />
+17-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:106-134
+18
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-67
+19-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-64
+20
+21    <uses-feature android:glEsVersion="0x00030000" />
+21-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-54
+21-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:19-51
+22    <uses-feature
+22-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-15:36
+23        android:name="android.hardware.touchscreen"
+23-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-52
+24        android:required="false" />
+24-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-33
+25    <uses-feature
+25-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:5-18:36
+26        android:name="android.hardware.touchscreen.multitouch"
+26-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-63
+27        android:required="false" />
+27-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-33
+28    <uses-feature
+28-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:5-21:36
+29        android:name="android.hardware.touchscreen.multitouch.distinct"
+29-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:9-72
+30        android:required="false" />
+30-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33
+31
+32    <uses-permission android:name="android.permission.CAMERA" />
+32-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:23:5-65
+32-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:23:22-62
+33
+34    <uses-feature
+34-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:25:5-27:35
+35        android:name="android.hardware.camera.ar"
+35-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:26:9-50
+36        android:required="true" />
+36-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:27:9-32
+37    <uses-feature
+37-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:28:5-30:35
+38        android:name="com.google.ar.core.depth"
+38-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:29:9-48
+39        android:required="true" />
+39-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:30:9-32
+40
+41    <queries>
+41-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:29:5-31:15
+42        <package android:name="com.google.ar.core" />
+42-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:30:9-54
+42-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:30:18-51
+43    </queries>
+44
+45    <application
+45-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:3-83
+46        android:debuggable="true"
+47        android:extractNativeLibs="true"
+47-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:32:18-50
+48        android:icon="@mipmap/app_icon"
+48-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:49-80
+49        android:label="@string/app_name" >
+49-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:16-48
+50        <meta-data
+50-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:9-35:33
+51            android:name="unity.splash-mode"
+51-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:34:13-45
+52            android:value="0" />
+52-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:35:13-30
+53        <meta-data
+53-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:36:9-38:36
+54            android:name="unity.splash-enable"
+54-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:37:13-47
+55            android:value="True" />
+55-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:38:13-33
+56        <meta-data
+56-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:39:9-41:36
+57            android:name="unity.launch-fullscreen"
+57-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:40:13-51
+58            android:value="True" />
+58-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:41:13-33
+59        <meta-data
+59-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:42:9-44:37
+60            android:name="unity.allow-resizable-window"
+60-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:43:13-56
+61            android:value="False" />
+61-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:44:13-34
+62        <meta-data
+62-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:45:9-47:50
+63            android:name="notch.config"
+63-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:46:13-40
+64            android:value="portrait|landscape" />
+64-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:47:13-47
+65        <meta-data
+65-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:48:9-50:36
+66            android:name="unity.auto-report-fully-drawn"
+66-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:49:13-57
+67            android:value="true" />
+67-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:50:13-33
+68
+69        <activity
+69-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:52:9-73:20
+70            android:name="com.unity3d.player.UnityPlayerActivity"
+70-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:53:13-66
+71            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+71-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:54:13-194
+72            android:exported="true"
+72-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:55:13-36
+73            android:hardwareAccelerated="false"
+73-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:56:13-48
+74            android:launchMode="singleTask"
+74-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:57:13-44
+75            android:resizeableActivity="false"
+75-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:58:13-47
+76            android:screenOrientation="fullUser"
+76-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:59:13-49
+77            android:theme="@style/UnityThemeSelector" >
+77-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:60:13-54
+78            <intent-filter>
+78-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:61:13-65:29
+79                <category android:name="android.intent.category.LAUNCHER" />
+79-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:62:17-77
+79-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:62:27-74
+80
+81                <action android:name="android.intent.action.MAIN" />
+81-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:64:17-69
+81-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:64:25-66
+82            </intent-filter>
+83
+84            <meta-data
+84-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:67:13-69:40
+85                android:name="unityplayer.UnityActivity"
+85-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:68:17-57
+86                android:value="true" />
+86-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:69:17-37
+87            <meta-data
+87-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:70:13-72:40
+88                android:name="notch_support"
+88-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:71:17-45
+89                android:value="true" />
+89-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:72:17-37
+90        </activity>
+91
+92        <meta-data
+92-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:75:9-77:36
+93            android:name="unityplayer.SkipPermissionsDialog"
+93-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:76:13-61
+94            android:value="true" />
+94-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:77:13-33
+95        <meta-data
+95-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:78:9-80:40
+96            android:name="com.google.ar.core"
+96-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:79:13-46
+97            android:value="required" /> <!-- The minimal version code of ARCore APK required for an app using this SDK. -->
+97-->[:unityLibrary] C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:80:13-37
+98        <meta-data
+98-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:36:9-38:41
+99            android:name="com.google.ar.core.min_apk_version"
+99-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:37:13-62
+100            android:value="220920000" /> <!-- This activity is critical for installing ARCore when it is not already present. -->
+100-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:38:13-38
+101        <activity
+101-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:40:9-46:80
+102            android:name="com.google.ar.core.InstallActivity"
+102-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:41:13-62
+103            android:configChanges="keyboardHidden|orientation|screenSize"
+103-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:42:13-74
+104            android:excludeFromRecents="true"
+104-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:43:13-46
+105            android:exported="false"
+105-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:44:13-37
+106            android:launchMode="singleTop"
+106-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:45:13-43
+107            android:theme="@android:style/Theme.Material.Light.Dialog.Alert" />
+107-->[:arcore_client:] C:\Users\49157\.gradle\caches\transforms-3\ece6358c3c3b544f3d6f3cc51ffa918c\transformed\arcore_client\AndroidManifest.xml:46:13-77
+108    </application>
+109
+110</manifest>

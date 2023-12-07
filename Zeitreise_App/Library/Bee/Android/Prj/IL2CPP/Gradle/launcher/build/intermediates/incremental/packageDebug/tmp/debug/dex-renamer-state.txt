@@ -1,0 +1,16 @@
+#Thu Dec 07 20:00:09 CET 2023
+path.4=10/classes.dex
+path.3=0/classes.dex
+path.2=4/classes.dex
+path.1=1/classes.dex
+path.0=classes.dex
+base.4=C\:\\Users\\49157\\Documents\\GitHub\\Zeitreise-AR-App\\Zeitreise_App\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
+base.3=C\:\\Users\\49157\\Documents\\GitHub\\Zeitreise-AR-App\\Zeitreise_App\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\49157\\Documents\\GitHub\\Zeitreise-AR-App\\Zeitreise_App\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\4\\classes.dex
+base.1=C\:\\Users\\49157\\Documents\\GitHub\\Zeitreise-AR-App\\Zeitreise_App\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\1\\classes.dex
+base.0=C\:\\Users\\49157\\Documents\\GitHub\\Zeitreise-AR-App\\Zeitreise_App\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+renamed.4=classes5.dex

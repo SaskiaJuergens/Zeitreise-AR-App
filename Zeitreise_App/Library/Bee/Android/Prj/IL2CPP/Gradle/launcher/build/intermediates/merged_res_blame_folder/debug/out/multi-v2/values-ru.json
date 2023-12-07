@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\49157\\Documents\\GitHub\\Zeitreise-AR-App\\Zeitreise_App\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\launcher\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ru\\values-ru.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\49157\\.gradle\\caches\\transforms-3\\ece6358c3c3b544f3d6f3cc51ffa918c\\transformed\\arcore_client\\res\\values-ru\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "0,0,0,0,0",
+                        "startOffsets": "190,237,285,410,535",
+                        "endColumns": "46,47,124,124,82",
+                        "endOffsets": "236,284,409,534,617"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,106,158,287,416",
+                        "endColumns": "50,51,128,128,86",
+                        "endOffsets": "101,153,282,411,498"
+                    }
+                }
+            ]
+        }
+    ]
+}

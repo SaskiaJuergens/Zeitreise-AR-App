@@ -1,0 +1,19 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.UnityTechnologies.XR.Manifest" >
+4
+5    <uses-sdk
+6        android:minSdkVersion="1"
+6-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+7        android:targetSdkVersion="22" />
+7-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+8
+9    <application>
+9-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:3:3-6:17
+10        <activity android:name="com.unity3d.player.UnityPlayerActivity" >
+10-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:4:5-5:16
+10-->C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:4:15-68
+11        </activity>
+12    </application>
+13
+14</manifest>

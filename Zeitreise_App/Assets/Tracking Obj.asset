@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: Tracking Obj
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4853554340779932772
+  m_GuidHigh: 1526143045416154504
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5492054257618640313
+      m_GuidHigh: 16665441711012505736
+    m_SerializedTextureGuid:
+      m_GuidLow: 13552470786523181125
+      m_GuidHigh: 12318781174600418137
+    m_Size: {x: 0.185, y: 0.23125}
+    m_SpecifySize: 1
+    m_Name: 27years
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5010527912870486121
+      m_GuidHigh: 2534876021595190186
+    m_SerializedTextureGuid:
+      m_GuidLow: 15718832198904110088
+      m_GuidHigh: 1324121195895895928
+    m_Size: {x: 0.2667772, y: 0.15}
+    m_SpecifySize: 1
+    m_Name: Super Mario
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4616187348640074151
+      m_GuidHigh: 12999446195084856474
+    m_SerializedTextureGuid:
+      m_GuidLow: 0
+      m_GuidHigh: 0
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Telefon
+    m_Texture: {fileID: 0}

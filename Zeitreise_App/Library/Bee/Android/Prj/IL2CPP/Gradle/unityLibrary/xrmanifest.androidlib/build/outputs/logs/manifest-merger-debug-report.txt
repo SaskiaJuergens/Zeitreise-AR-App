@@ -1,0 +1,31 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:2:1-7:12
+INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:2:1-7:12
+INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:2:1-7:12
+	package
+		ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:2:70-113
+		INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+		INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:3:3-6:17
+activity#com.unity3d.player.UnityPlayerActivity
+ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:4:5-5:16
+	android:name
+		ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml:4:15-68
+uses-sdk
+INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+		ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+		INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+		ADDED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
+		INJECTED from C:\Users\49157\Documents\GitHub\Zeitreise-AR-App\Zeitreise_App\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\xrmanifest.androidlib\AndroidManifest.xml
