@@ -1,4 +1,10 @@
+#include <SD.h>
+#include <sd_defines.h>
+#include <sd_diskio.h>
 
+#include <SD.h>
+#include <sd_defines.h>
+#include <sd_diskio.h>
 
 #include <Arduino_GFX_Library.h>
 #include <SD.h>
