@@ -1,5 +1,7 @@
 #include <Arduino_GFX_Library.h>
+#include <TouchScreen.h>
 
+//Chip ESP32 S3
 #define TFT_BLK 45
 #define TFT_RES 11
 
@@ -11,21 +13,27 @@
 
 #define GFX_BL TFT_BLK
 
+//Display Initialization
 Arduino_ESP32SPI *bus = new Arduino_ESP32SPI(TFT_DC, TFT_CS, TFT_SCLK, TFT_MOSI, TFT_MISO, HSPI, true); // Constructor
 Arduino_GFX *gfx = new Arduino_GC9A01(bus, TFT_RES, 0 /* rotation */, true /* IPS */);
 
-#define BACKGROUND BLACK
-#define MARK_COLOR WHITE
-#define SUBMARK_COLOR DARKGREY // LIGHTGREY
-#define HOUR_COLOR WHITE
-#define MINUTE_COLOR BLUE // LIGHTGREY
-#define SECOND_COLOR RED
+#define BACKGROUND WHITE
+#define MARK_COLOR BLACK
+#define SUBMARK_COLOR DARKGREY 
+#define HOUR_COLOR BLACK
+#define MINUTE_COLOR BLACK
+#define SECOND_COLOR BLACK
 
 #define SIXTIETH 0.016666667
 #define TWELFTH 0.08333333
 #define SIXTIETH_RADIAN 0.10471976
 #define TWELFTH_RADIAN 0.52359878
 #define RIGHT_ANGLE_RADIAN 1.5707963
+
+// Touchscreen-Pin-Definitionen (Anpassung an deine tatsächliche Hardware erforderlich)
+#define TS_CS 22
+#define TS_IRQ 23
+TouchScreen ts = TouchScreen(TS_CS, TS_IRQ);
 
 static uint8_t conv2d(const char *p)
 {
@@ -73,51 +81,88 @@ void setup(void)
     markLen = sHandLen / 6;
     cached_points = (int16_t *)malloc((hHandLen + 1 + mHandLen + 1 + sHandLen + 1) * 2 * 2);
 
-    // Draw 60 clock marks
-    draw_round_clock_mark(
-        // draw_square_clock_mark(
-        center - markLen, center,
-        center - (markLen * 2 / 3), center,
-        center - (markLen / 2), center);
+    // Draw Roman numeral for 12
+    draw_roman_clock_mark(0, center - markLen * 3, center - markLen * 4);
 
-    hh = conv2d(__TIME__);
+    // Draw Roman numerals for 1 to 11
+    for (int i = 1; i <= 11; i++) {
+        draw_roman_clock_mark(i, center - markLen * 2, center - markLen * 3);
+    }
+
+        hh = conv2d(__TIME__);
     mm = conv2d(__TIME__ + 3);
     ss = conv2d(__TIME__ + 6);
 
     targetTime = ((millis() / 1000) + 1) * 1000;
 }
 
+//Römische Zahlen für die UI
+void draw_roman_clock_mark(int16_t hour, int16_t outerR, int16_t innerR)
+{
+    String romanNumerals[] = {"XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"};
+    float mdeg = (SIXTIETH_RADIAN * hour * 5) - RIGHT_ANGLE_RADIAN;
+
+    int16_t x0 = cos(mdeg) * outerR + center;
+    int16_t y0 = sin(mdeg) * outerR + center;
+    int16_t x1 = cos(mdeg) * innerR + center;
+    int16_t y1 = sin(mdeg) * innerR + center;
+
+    // Draw Roman numeral
+    gfx->setCursor((x0 + x1) / 2 - 10, (y0 + y1) / 2 - 5);
+    gfx->setTextSize(1);
+    gfx->setTextColor(MARK_COLOR);
+    gfx->print(romanNumerals[hour]);
+
+    // Draw clock mark
+    gfx->drawLine(x0, y0, x1, y1, MARK_COLOR);
+}
+
+
+
 void loop()
 {
     unsigned long cur_millis = millis();
-    if (cur_millis >= targetTime)
+    TSPoint touch = ts.getPoint();
+
+    if (touch.z > 0 && touch.x >= minX && touch.x <= maxX && touch.y >= minY && touch.y <= maxY)
     {
-        targetTime += 1000;
-        ss++; // Advance second
-        if (ss == 60)
+        // Touchscreen-Eingabe verarbeiten, große Zeigerposition aktualisieren
+        nhx = touch.x;
+        nhy = touch.y;
+    }
+    else
+    {
+        // Reguläre Uhr-Logik nur dann ausführen, wenn der Bildschirm nicht berührt wird
+        if (cur_millis >= targetTime)
         {
-            ss = 0;
-            mm++; // Advance minute
-            if (mm > 59)
+            targetTime += 1000;
+            ss++;
+
+            if (ss == 60)
             {
-                mm = 0;
-                hh++; // Advance hour
-                if (hh > 23)
+                ss = 0;
+                mm++;
+
+                if (mm > 59)
                 {
-                    hh = 0;
+                    mm = 0;
+                    hh++;
+
+                    if (hh > 23)
+                    {
+                        hh = 0;
+                    }
                 }
             }
         }
-    }
 
-    // Pre-compute hand degrees, x & y coords for a fast screen update
-    sdeg = SIXTIETH_RADIAN * ((0.001 * (cur_millis % 1000)) + ss); // 0-59 (includes millis)
-    nsx = cos(sdeg - RIGHT_ANGLE_RADIAN) * sHandLen + center;
-    nsy = sin(sdeg - RIGHT_ANGLE_RADIAN) * sHandLen + center;
-    if ((nsx != osx) || (nsy != osy))
-    {
-        mdeg = (SIXTIETH * sdeg) + (SIXTIETH_RADIAN * mm); // 0-59 (includes seconds)
-        hdeg = (TWELFTH * mdeg) + (TWELFTH_RADIAN * hh);   // 0-11 (includes minutes)
+        // Hier die restliche Uhr-Logik ausführen (sHand, mHand, hHand berechnen und zeichnen)
+        sdeg = SIXTIETH_RADIAN * ((0.001 * (cur_millis % 1000)) + ss);
+        nsx = cos(sdeg - RIGHT_ANGLE_RADIAN) * sHandLen + center;
+        nsy = sin(sdeg - RIGHT_ANGLE_RADIAN) * sHandLen + center;
+
+        mdeg = (SIXTIETH * sdeg) + (SIXTIETH_RADIAN * mm);
+        hdeg = (TWELFTH * mdeg) + (TWELFTH_RADIAN * hh);
         mdeg -= RIGHT_ANGLE_RADIAN;
         hdeg -= RIGHT_ANGLE_RADIAN;
         nmx = cos(mdeg) * mHandLen + center;
@@ -127,16 +172,9 @@ void loop()
 
         // redraw hands
         redraw_hands_cached_draw_and_erase();
-
-        ohx = nhx;
-        ohy = nhy;
-        omx = nmx;
-        omy = nmy;
-        osx = nsx;
-        osy = nsy;
-
-        delay(1);
     }
+
+    delay(1); // Hinzugefügte Verzögerung
 }
 
 void draw_round_clock_mark(int16_t innerR1, int16_t outerR1, int16_t innerR2, int16_t outerR2, int16_t innerR3, int16_t outerR3)
