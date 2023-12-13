@@ -33,7 +33,8 @@ Arduino_GFX *gfx = new Arduino_GC9A01(bus, TFT_RES, 0 /* rotation */, true /* IP
 // Touchscreen-Pin-Definitionen (Anpassung an deine tatsächliche Hardware erforderlich)
 #define TS_CS 22
 #define TS_IRQ 23
-TouchScreen ts = TouchScreen(TS_CS, TS_IRQ);
+TouchScreen ts = TouchScreen(TS_CS, TS_IRQ, 0, 0, 0);
+
 
 static uint8_t conv2d(const char *p)
 {
@@ -96,10 +97,28 @@ void setup(void)
     targetTime = ((millis() / 1000) + 1) * 1000;
 }
 
+void draw_hands(int16_t x, int16_t y, float angle, int16_t length, int16_t width, int16_t color)
+{
+    // Calculate the endpoint of the hand
+    int16_t x2 = x + cos(angle) * length;
+    int16_t y2 = y + sin(angle) * length;
+
+    // Calculate the two sides of the hand to create a triangle (arrowhead)
+    int16_t x3 = x2 + cos(angle + PI / 10) * width;
+    int16_t y3 = y2 + sin(angle + PI / 10) * width;
+    int16_t x4 = x2 + cos(angle - PI / 10) * width;
+    int16_t y4 = y2 + sin(angle - PI / 10) * width;
+
+    // Draw the hand (line) and arrowhead (triangle)
+    gfx->drawLine(x, y, x2, y2, color);
+    gfx->fillTriangle(x2, y2, x3, y3, x4, y4, color);
+}
+
 //Römische Zahlen für die UI
 void draw_roman_clock_mark(int16_t hour, int16_t outerR, int16_t innerR)
 {
     String romanNumerals[] = {"XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"};
+
     float mdeg = (SIXTIETH_RADIAN * hour * 5) - RIGHT_ANGLE_RADIAN;
 
     int16_t x0 = cos(mdeg) * outerR + center;
@@ -107,9 +126,15 @@ void draw_roman_clock_mark(int16_t hour, int16_t outerR, int16_t innerR)
     int16_t x1 = cos(mdeg) * innerR + center;
     int16_t y1 = sin(mdeg) * innerR + center;
 
+    // Berechne die Position für die römische Zahl
+    int16_t romanX = (x0 + x1) / 2;
+    int16_t romanY = (y0 + y1) / 2;
+
     // Draw Roman numeral
-    gfx->setCursor((x0 + x1) / 2 - 10, (y0 + y1) / 2 - 5);
-    gfx->setTextSize(1);
+    //gfx->setCursor((x0 + x1) / 2 - 10, (y0 + y1) / 2 - 5);
+    gfx->setCursor(romanX - 10, romanY - 10);
+    //Zahlengröße
+    gfx->setTextSize(2);
     gfx->setTextColor(MARK_COLOR);
     gfx->print(romanNumerals[hour]);
 
@@ -122,9 +147,27 @@ void draw_roman_clock_mark(int16_t hour, int16_t outerR, int16_t innerR)
 void loop()
 {
     unsigned long cur_millis = millis();
-    TSPoint touch = ts.getPoint();
+      TSPoint touch = ts.getPoint();
+  
+  Serial.print("X: "); Serial.print(touch.x);
+  Serial.print(" Y: "); Serial.print(touch.y);
+  Serial.print(" Z: "); Serial.println(touch.z);
 
-    if (touch.z > 0 && touch.x >= minX && touch.x <= maxX && touch.y >= minY && touch.y <= maxY)
+        // Zeichne zuerst die römischen Zahlen
+        // Draw Roman numeral for 12
+        draw_roman_clock_mark(0, center - markLen * 3, center - markLen * 4);
+
+        // Draw Roman numerals for 1 to 11
+        for (int i = 1; i <= 11; i++)
+        {
+            draw_roman_clock_mark(i, center - markLen * 2, center - markLen * 3);
+        }
+
+        // Dann die normalen Uhrmarkierungen
+        draw_round_clock_mark(center - markLen * 3, center - markLen * 4, center - markLen * 2, center - markLen * 3, center - markLen, center - markLen * 2);
+
+
+    if (touch.z > 0 && touch.x >= 0 && touch.x <= w && touch.y >= 0 && touch.y <= h)
     {
         // Touchscreen-Eingabe verarbeiten, große Zeigerposition aktualisieren
         nhx = touch.x;
@@ -170,12 +213,18 @@ void loop()
         nhx = cos(hdeg) * hHandLen + center;
         nhy = sin(hdeg) * hHandLen + center;
 
-        // redraw hands
-        redraw_hands_cached_draw_and_erase();
+
+        gfx->startWrite();
+        draw_and_erase_cached_line(center, center, nsx, nsy, SECOND_COLOR, cached_points, sHandLen + 1, false, false);
+        draw_and_erase_cached_line(center, center, nhx, nhy, HOUR_COLOR, cached_points + ((sHandLen + 1) * 2), hHandLen + 1, true, false);
+        draw_and_erase_cached_line(center, center, nmx, nmy, MINUTE_COLOR, cached_points + ((sHandLen + 1 + hHandLen + 1) * 2), mHandLen + 1, true, true);
+        gfx->endWrite();
+
     }
 
-    delay(1); // Hinzugefügte Verzögerung
+    delay(10); // Hinzugefügte Verzögerung
 }
+
 
 void draw_round_clock_mark(int16_t innerR1, int16_t outerR1, int16_t innerR2, int16_t outerR2, int16_t innerR3, int16_t outerR3)
 {
@@ -211,6 +260,11 @@ void draw_round_clock_mark(int16_t innerR1, int16_t outerR1, int16_t innerR2, in
         y0 = y * outerR + center;
         x1 = x * innerR + center;
         y1 = y * innerR + center;
+
+        // Verkürze die äußeren Marker
+        float factor = 1.1; // Du kannst den Faktor entsprechend anpassen
+        x0 = center + (x * (outerR * factor));
+        y0 = center + (y * (outerR * factor));
 
         gfx->drawLine(x0, y0, x1, y1, c);
     }
