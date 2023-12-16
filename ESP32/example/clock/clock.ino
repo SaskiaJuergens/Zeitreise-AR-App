@@ -1,9 +1,5 @@
 #include <Arduino_GFX_Library.h>
-#include <TouchScreen.h>
-#include <Bounce2.h> //merkt zustandsänderung und igrnoried schnelles bouncen
-//#include <BluetoothSerial.h> //Bluethooth libary
 
-//Chip ESP32 S3
 #define TFT_BLK 45
 #define TFT_RES 11
 
@@ -15,39 +11,21 @@
 
 #define GFX_BL TFT_BLK
 
-//Display Initialization
 Arduino_ESP32SPI *bus = new Arduino_ESP32SPI(TFT_DC, TFT_CS, TFT_SCLK, TFT_MOSI, TFT_MISO, HSPI, true); // Constructor
 Arduino_GFX *gfx = new Arduino_GC9A01(bus, TFT_RES, 0 /* rotation */, true /* IPS */);
 
-#define BACKGROUND WHITE
-#define MARK_COLOR BLACK
-#define SUBMARK_COLOR DARKGREY 
-#define HOUR_COLOR BLACK
-#define MINUTE_COLOR BLACK
-#define SECOND_COLOR BLACK
+#define BACKGROUND BLACK
+#define MARK_COLOR WHITE
+#define SUBMARK_COLOR DARKGREY // LIGHTGREY
+#define HOUR_COLOR WHITE
+#define MINUTE_COLOR BLUE // LIGHTGREY
+#define SECOND_COLOR RED
 
 #define SIXTIETH 0.016666667
 #define TWELFTH 0.08333333
 #define SIXTIETH_RADIAN 0.10471976
 #define TWELFTH_RADIAN 0.52359878
 #define RIGHT_ANGLE_RADIAN 1.5707963
-
-// Touchscreen-Pin-Definitionen (Anpassung an deine tatsächliche Hardware erforderlich)
-#define TS_CS 22
-#define TS_IRQ 23
-TouchScreen ts = TouchScreen(TS_CS, TS_IRQ, 0, 0, 0);
-
-Bounce button_plus;
-Bounce button_minus;
-
-#define PIN_A 38
-#define PIN_B 39
-
-int count =0;
-unsigned long timestamp = 0;
-
-#define LONG_PRESS 1000;
-#define PRESS_INTERVAL 50;
 
 static uint8_t conv2d(const char *p)
 {
@@ -61,7 +39,7 @@ static float sdeg, mdeg, hdeg;
 static int16_t osx = 0, osy = 0, omx = 0, omy = 0, ohx = 0, ohy = 0; // Saved H, M, S x & y coords
 static int16_t nsx, nsy, nmx, nmy, nhx, nhy;                         // H, M, S x & y coords
 static int16_t xMin, yMin, xMax, yMax;                               // redraw range
-static int16_t hh, mm, ss;       //Hour, Minute, Sekunde
+static int16_t hh, mm, ss;
 static unsigned long targetTime; // next action time
 
 static int16_t *cached_points;
@@ -70,8 +48,7 @@ static int16_t *last_cached_point;
 
 void setup(void)
 {
-  Serial.begin(9600); // or another baud rate
-
+  Serial.begin(9600);
     gfx->begin();
     gfx->fillScreen(BACKGROUND);
 
@@ -79,14 +56,6 @@ void setup(void)
     pinMode(GFX_BL, OUTPUT);
     digitalWrite(GFX_BL, HIGH);
 #endif
-
-    //PullUp-Widerstand mit PIN_ verbinden, um bei nicht getückten zustand ein ende definieren 
-    button_plus.attach(PIN_A, INPUT_PULLUP);
-    button_minus.attach(PIN_B, INPUT_PULLUP);
-
-    button_plus.interval(50); //bounce sensivität
-    button_minus.interval(50);
-
 
     // init LCD constant
     w = gfx->width();
@@ -105,13 +74,12 @@ void setup(void)
     markLen = sHandLen / 6;
     cached_points = (int16_t *)malloc((hHandLen + 1 + mHandLen + 1 + sHandLen + 1) * 2 * 2);
 
-    // Draw Roman numeral for 12
-    draw_roman_clock_mark(0, center - markLen * 3, center - markLen * 4);
-
-    // Draw Roman numerals for 1 to 11
-    for (int i = 1; i <= 11; i++) {
-        draw_roman_clock_mark(i, center - markLen * 2, center - markLen * 3);
-    }
+    // Draw 60 clock marks
+    draw_round_clock_mark(
+        // draw_square_clock_mark(
+        center - markLen, center,
+        center - (markLen * 2 / 3), center,
+        center - (markLen / 2), center);
 
     hh = conv2d(__TIME__);
     mm = conv2d(__TIME__ + 3);
@@ -120,40 +88,9 @@ void setup(void)
     targetTime = ((millis() / 1000) + 1) * 1000;
 }
 
-
-//Römische Zahlen für die UI
-void draw_roman_clock_mark(int16_t hour, int16_t outerR, int16_t innerR)
+void loop()
 {
-    String romanNumerals[] = {"XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"};
-
-    float mdeg = (SIXTIETH_RADIAN * hour * 5) - RIGHT_ANGLE_RADIAN;
-
-    int16_t x0 = cos(mdeg) * outerR + center;
-    int16_t y0 = sin(mdeg) * outerR + center;
-    int16_t x1 = cos(mdeg) * innerR + center;
-    int16_t y1 = sin(mdeg) * innerR + center;
-
-    // Berechne die Position für die römische Zahl
-    int16_t romanX = (x0 + x1) / 2;
-    int16_t romanY = (y0 + y1) / 2;
-
-    // Draw Roman numeral
-    //gfx->setCursor((x0 + x1) / 2 - 10, (y0 + y1) / 2 - 5);
-    gfx->setCursor(romanX - 10, romanY - 10);
-    //Zahlengröße
-    gfx->setTextSize(2);
-    gfx->setTextColor(MARK_COLOR);
-    gfx->print(romanNumerals[hour]);
-
-    // Draw clock mark
-    gfx->drawLine(x0, y0, x1, y1, MARK_COLOR);
-}
-
-
-
-void loop(){
     unsigned long cur_millis = millis();
-    //TSPoint touch = ts.getPoint();
     if (cur_millis >= targetTime)
     {
         targetTime += 1000;
@@ -174,98 +111,37 @@ void loop(){
         }
     }
 
-    //Button pressed
-    button_plus.update();
-    button_minus.update();
-
-
-    Serial.print("Button Plus State: "); Serial.println(button_plus.read());
-    Serial.print("Button Minus State: "); Serial.println(button_minus.read());
-
-
-    if(button_plus.fell()){ //drücken knopf
-    Serial.println("Button Plus Pressed");
-      //zeitpunkt speichern
-      count ++;
-      mm++;
-      if(mm==60){
-        mm=0;
-        hh=hh+1;
-      }
-      timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
-    }
-    if(button_minus.fell()){ //drücken knopf
-    Serial.println("Button Minus Pressed");
-      //zeitpunkt speichern
-      count --;
-      mm--;
-      if(mm==0){
-        mm=60;
-        hh=hh-1;
-      }
-      timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
-    }
-    //if(button_plus.rose()){ //wenn button losgelassen wird
-    if(button_plus.read() == LOW && millis() > timestamp){ //während button gedrückt wird
-      count++;
-      mm++;
-      if(mm==60){
-        mm=0;
-        hh=hh+1;
-      }
-      timestamp = millis() + PRESS_INTERVAL;
-    }
-    if(button_plus.read() == LOW && millis() > timestamp){ //während button gedrückt wird
-      count--;
-      mm--;
-      if(mm==0){
-        mm=60;
-        hh=hh-1;
-      }
-      timestamp = millis() + PRESS_INTERVAL;
-    }
-
-    Serial.print("Count: "); Serial.println(count);
     Serial.print("MM: "); Serial.println(mm);
     Serial.print("HH: "); Serial.println(hh);
 
 
-    // Hier die restliche Uhr-Logik ausführen
-    sdeg = SIXTIETH_RADIAN * ((0.001 * (cur_millis % 1000)) + ss);
+    // Pre-compute hand degrees, x & y coords for a fast screen update
+    sdeg = SIXTIETH_RADIAN * ((0.001 * (cur_millis % 1000)) + ss); // 0-59 (includes millis)
     nsx = cos(sdeg - RIGHT_ANGLE_RADIAN) * sHandLen + center;
     nsy = sin(sdeg - RIGHT_ANGLE_RADIAN) * sHandLen + center;
+    if ((nsx != osx) || (nsy != osy))
+    {
+        mdeg = (SIXTIETH * sdeg) + (SIXTIETH_RADIAN * mm); // 0-59 (includes seconds)
+        hdeg = (TWELFTH * mdeg) + (TWELFTH_RADIAN * hh);   // 0-11 (includes minutes)
+        mdeg -= RIGHT_ANGLE_RADIAN;
+        hdeg -= RIGHT_ANGLE_RADIAN;
+        nmx = cos(mdeg) * mHandLen + center;
+        nmy = sin(mdeg) * mHandLen + center;
+        nhx = cos(hdeg) * hHandLen + center;
+        nhy = sin(hdeg) * hHandLen + center;
 
-    mdeg = (SIXTIETH * sdeg) + (SIXTIETH_RADIAN * mm);
-    hdeg = (TWELFTH * mdeg) + (TWELFTH_RADIAN * hh);
-    mdeg -= RIGHT_ANGLE_RADIAN;
-    hdeg -= RIGHT_ANGLE_RADIAN;
-    nmx = cos(mdeg) * mHandLen + center;
-    nmy = sin(mdeg) * mHandLen + center;
-    nhx = cos(hdeg) * hHandLen + center;
-    nhy = sin(hdeg) * hHandLen + center;
+        // redraw hands
+        redraw_hands_cached_draw_and_erase();
 
-    redraw_hands_cached_draw_and_erase();
+        ohx = nhx;
+        ohy = nhy;
+        omx = nmx;
+        omy = nmy;
+        osx = nsx;
+        osy = nsy;
 
-    ohx = nhx;
-    ohy = nhy;
-    omx = nmx;
-    omy = nmy;
-    osx = nsx;
-    osy = nsy;
-
-    // Zeichne zuerst die römischen Zahlen
-    // Draw Roman numeral for 12
-    draw_roman_clock_mark(0, center - markLen * 3, center - markLen * 4);
-
-    // Draw Roman numerals for 1 to 11
-    for (int i = 1; i <= 11; i++) {
-        draw_roman_clock_mark(i, center - markLen * 2, center - markLen * 3);
+        delay(1);
     }
-
-    // Dann die normalen Uhrmarkierungen
-    draw_round_clock_mark(center - markLen * 3, center - markLen * 4, center - markLen * 2, center - markLen * 3, center - markLen, center - markLen * 2);
-
-    delay(10); // Hinzugefügte Verzögerung
 }
 
 void draw_round_clock_mark(int16_t innerR1, int16_t outerR1, int16_t innerR2, int16_t outerR2, int16_t innerR3, int16_t outerR3)
@@ -302,11 +178,6 @@ void draw_round_clock_mark(int16_t innerR1, int16_t outerR1, int16_t innerR2, in
         y0 = y * outerR + center;
         x1 = x * innerR + center;
         y1 = y * innerR + center;
-
-        // Verkürze die äußeren Marker
-        float factor = 1.1; // Du kannst den Faktor entsprechend anpassen
-        x0 = center + (x * (outerR * factor));
-        y0 = center + (y * (outerR * factor));
 
         gfx->drawLine(x0, y0, x1, y1, c);
     }
