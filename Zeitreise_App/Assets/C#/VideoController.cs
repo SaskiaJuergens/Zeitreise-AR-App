@@ -39,8 +39,19 @@ public class VideoController : MonoBehaviour
         videoClips = new VideoClip[22];
         for (int i = 0; i < 22; i++)
         {
-            videoClips[i] = Resources.Load<VideoClip>("Videos/Video" + (i + 1));
+            string videoPath = "Mario/Video" + (i + 1);
+            videoClips[i] = Resources.Load<VideoClip>(videoPath);
+
+            if (videoClips[i] == null)
+            {
+                Debug.LogError("VideoClip " + (i + 1) + " konnte nicht geladen werden! Pfad: " + videoPath);
+            }
+            else
+            {
+                Debug.Log("VideoClip " + (i + 1) + " erfolgreich geladen! Pfad: " + videoPath);
+            }
         }
+
 
         // Video abspielen
         PlayCurrentVideo();

@@ -381,7 +381,6 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/C#/FotoContainerController.cs"
-"Assets/C#/NewBehaviourScript.cs"
 "Assets/C#/PlaceTrack.cs"
 "Assets/C#/TelefonWechselScript.cs"
 "Assets/C#/VideoController.cs"

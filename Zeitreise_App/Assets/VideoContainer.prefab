@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &334697981901570247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7924170372928805592}
+  - component: {fileID: 8512299002545650284}
+  - component: {fileID: 1406579449399720572}
+  m_Layer: 0
+  m_Name: VideoContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7924170372928805592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334697981901570247}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &8512299002545650284
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334697981901570247}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 1db6e6f20d8dcb04596b4af00462cdcf, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!114 &1406579449399720572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334697981901570247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b540fbfe9d99faa4ca5ae7e73e51030d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 8512299002545650284}
+  videoClips:
+  - {fileID: 32900000, guid: c0a0ca7940ba1f447baef1b87ff04220, type: 3}
+  - {fileID: 32900000, guid: 6685dc2c15990f449bdeaccf68628a0c, type: 3}
+  - {fileID: 32900000, guid: f7471ddf1225fe4438fcc9dc606f2023, type: 3}
+  - {fileID: 32900000, guid: 2a3f8207e89815043b4b15409a9ce935, type: 3}
+  - {fileID: 32900000, guid: fc4c8ddb336b60d46b3aaf00c00bc905, type: 3}
+  - {fileID: 32900000, guid: 601d2e045a78a53478b4fd6f4cefa38c, type: 3}
+  - {fileID: 32900000, guid: 38206b59d1dff644181d4cf037cc867f, type: 3}
+  - {fileID: 32900000, guid: eca266c901f5ae545aa019be5f8b9a79, type: 3}
+  - {fileID: 32900000, guid: 9726b7720729d424eacaacfe1d878957, type: 3}
+  - {fileID: 32900000, guid: 9726b7720729d424eacaacfe1d878957, type: 3}
+  - {fileID: 32900000, guid: 6cf019e5ad9011649b18c8d4ccd086d9, type: 3}
+  - {fileID: 32900000, guid: 4ed42126297623040a553f439ef0af50, type: 3}
+  - {fileID: 32900000, guid: 150bf57e08920c547a78ccd115f764ed, type: 3}
+  - {fileID: 32900000, guid: f9b21f3edc33f4e4b8bc7575f61686a2, type: 3}
+  - {fileID: 32900000, guid: e96f69b5214746846a8b28d6706f8aa5, type: 3}
+  - {fileID: 32900000, guid: 66ca2172fecbcfe4985cce3dd39a20a0, type: 3}
+  - {fileID: 32900000, guid: ec2d5a1032ff6f1488131fd333fe2cec, type: 3}
+  - {fileID: 32900000, guid: 24f3c8d14a6234e4e8f98c8bbbf7aacf, type: 3}
+  - {fileID: 32900000, guid: ffa0e65caea85954896e74a09749bfe9, type: 3}
+  - {fileID: 32900000, guid: b98ee76aa75b1e148b379512c48d936b, type: 3}
+  - {fileID: 32900000, guid: 48c78780651acdb40a1eeb67832cfd16, type: 3}
+  - {fileID: 32900000, guid: 1db6e6f20d8dcb04596b4af00462cdcf, type: 3}
+  plusButton: {fileID: 0}
+  minusButton: {fileID: 0}
