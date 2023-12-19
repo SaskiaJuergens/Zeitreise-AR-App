@@ -8,6 +8,9 @@ using UnityEngine.XR.ARSubsystems;
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class PlaceTrack : MonoBehaviour
 {
+    public GameObject TelefonContainer; // TelefonContainer deklarieren
+    public GameObject FotoContainer;    // FotoContainer deklarieren
+
     // Reference to AR tracked image manager component
     private ARTrackedImageManager _trackedImagesManager;
 
@@ -41,6 +44,33 @@ public class PlaceTrack : MonoBehaviour
     // When the tracker finds something
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
+        // Loop durch alle neuen erkannten Bilder
+        foreach (var trackedImage in eventArgs.added)
+        {
+            // Hol den Namen des Referenzbildes
+            var imageName = trackedImage.referenceImage.name;
+
+            // Finde das entsprechende Prefab für dieses erkannte Bild
+            GameObject prefabToInstantiate = null;
+
+            if (string.Equals(imageName, "Telefon", StringComparison.OrdinalIgnoreCase))
+            {
+                prefabToInstantiate = TelefonContainer;
+            }
+            else if (string.Equals(imageName, "Portrait", StringComparison.OrdinalIgnoreCase))
+            {
+                prefabToInstantiate = FotoContainer;
+            }
+
+            if (prefabToInstantiate != null && !_instantiatedPrefabs.ContainsKey(imageName))
+            {
+                // Instanziere das Prefab und setze es als Kind des ARTrackedImage
+                var newPrefab = Instantiate(prefabToInstantiate, trackedImage.transform);
+                // Füge das erstellte Prefab zu unserem Array hinzu
+                _instantiatedPrefabs[imageName] = newPrefab;
+            }
+        }
+        /*
         // Loop through all new tracked images that have been detected
         foreach (var trackedImage in eventArgs.added)
         {
@@ -60,7 +90,7 @@ public class PlaceTrack : MonoBehaviour
                     _instantiatedPrefabs[imageName] = newPrefab;
                 }
             }
-        }
+        }*/
 
         // For all prefabs that have been created so far, set them active or not depending
         // on whether their corresponding image is currently being tracked
@@ -69,16 +99,14 @@ public class PlaceTrack : MonoBehaviour
             _instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(trackedImage.trackingState == TrackingState.Tracking);
         }
 
-        // If the AR subsystem has given up looking for a tracked image
-        // if the object isn't detected anymore, is out of the scene for a time
+        // Wenn das AR-Subsystem aufhört, nach einem erkannten Bild zu suchen
+        // wenn das Objekt nicht mehr erkannt wird, für eine gewisse Zeit aus der Szene verschwindet
         foreach (var trackedImage in eventArgs.removed)
         {
-            // Destroy its prefab
+            // Zerstöre das Prefab
             Destroy(_instantiatedPrefabs[trackedImage.referenceImage.name]);
-            // Also remove the instance from our array
+            // Entferne die Instanz aus unserem Array
             _instantiatedPrefabs.Remove(trackedImage.referenceImage.name);
-            // Or, simply set the prefab instance to inactive
-            // _instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(false);
         }
     }
 }

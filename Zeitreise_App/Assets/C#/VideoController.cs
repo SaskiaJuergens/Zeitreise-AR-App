@@ -1,140 +1,80 @@
-using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
-using UnityEngine.XR.ARSubsystems;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.UI;  // Import the Unity UI namespace
-
 
 public class VideoController : MonoBehaviour
 {
-    public VideoPlayer videoPlayer;
-    private ARTrackedImageManager trackedImageManager;
-
-    // Liste von VideoClips
-    public VideoClip[] videoClips;
-
-    private int currentClipIndex = 0;
-
-    // UI Buttons for controlling the video
+    public GameObject videoPrefab;  // Das Video-Prefab
+    public Transform videoContainer; // Hier könntest du einen leeren GameObject-Container für die Videos verwenden
     public Button plusButton;
     public Button minusButton;
 
+    private int currentVideoIndex = 0;
+    private GameObject[] videos;
+    private VideoPlayer videoPlayer;
+
     void Start()
     {
-        // Hole den ARTrackedImageManager
-        trackedImageManager = FindObjectOfType<ARTrackedImageManager>();
-        if (trackedImageManager != null)
+        // Initialisiere die Videos
+        videos = new GameObject[20];
+        for (int i = 0; i < 20; i++)
         {
-            // Weise den Callback für das Image-Tracking-Event zu
-            trackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-        }
-        else
-        {
-            Debug.LogError("ARTrackedImageManager not found in the scene.");
-        }
+            GameObject videoObject = Instantiate(videoPrefab, videoContainer);
+            VideoPlayer vp = videoObject.GetComponent<VideoPlayer>();
+            videos[i] = videoObject;
+            videoObject.SetActive(false);
 
-        // VideoClips zur Laufzeit hinzufügen (kannst du nach Bedarf anpassen)
-        videoClips = new VideoClip[22];
-        for (int i = 0; i < 22; i++)
-        {
-            string videoPath = "Mario/Video" + (i + 1);
-            videoClips[i] = Resources.Load<VideoClip>(videoPath);
+            string videoName = "Video" + (i + 1);
+            VideoClip videoClip = Resources.Load<VideoClip>("Mario/" + videoName);
 
-            if (videoClips[i] == null)
+            if (videoClip == null)
             {
-                Debug.LogError("VideoClip " + (i + 1) + " konnte nicht geladen werden! Pfad: " + videoPath);
+                Debug.LogError("VideoClip " + (i + 1) + " konnte nicht geladen werden! Name: " + videoName);
             }
             else
             {
-                Debug.Log("VideoClip " + (i + 1) + " erfolgreich geladen! Pfad: " + videoPath);
+                vp.clip = videoClip;
+                Debug.Log("VideoClip " + (i + 1) + " erfolgreich geladen! Name: " + videoName);
             }
         }
 
+        // Hole den VideoPlayer des ersten Videos
+        videoPlayer = videos[currentVideoIndex].GetComponent<VideoPlayer>();
 
-        // Video abspielen
+        // Spiele das erste Video ab
         PlayCurrentVideo();
 
-        // Register button click events
-        plusButton.onClick.AddListener(OnPlusButtonClicked);
-        minusButton.onClick.AddListener(OnMinusButtonClicked);
+        // Setze die Button-Handler
+        plusButton.onClick.AddListener(PlayNextVideo);
+        minusButton.onClick.AddListener(PlayPreviousVideo);
     }
 
-    private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
+    void PlayNextVideo()
     {
-        foreach (var trackedImage in eventArgs.added)
+        currentVideoIndex = (currentVideoIndex + 1) % videos.Length;
+        PlayCurrentVideo();
+    }
+
+    void PlayPreviousVideo()
+    {
+        currentVideoIndex = (currentVideoIndex - 1 + videos.Length) % videos.Length;
+        PlayCurrentVideo();
+    }
+
+    void PlayCurrentVideo()
+    {
+        // Deaktiviere alle Videos
+        foreach (var video in videos)
         {
-            // Hier könntest du überprüfen, ob das erkannte Bild das ist, auf das du das Video rendern möchtest
-            // In diesem Beispiel gehen wir davon aus, dass das erste erkannte Bild verwendet wird
-            if (trackedImage.referenceImage.name == "DeinZielbildName")
-            {
-                // Setze das Video auf das Zielbild
-                videoPlayer.targetMaterialRenderer = trackedImage.GetComponent<Renderer>();
-                videoPlayer.Play();
-                break;
-            }
+            video.SetActive(false);
         }
-    }
 
-    public void PlayNextVideo()
-    {
-        int nextClipIndex = (currentClipIndex + 1) % videoClips.Length;
-        CheckClipIndexBounds(nextClipIndex);
+        // Aktiviere das aktuelle Video
+        videos[currentVideoIndex].SetActive(true);
 
-        // Setze das nächste Video
-        videoPlayer.clip = videoClips[nextClipIndex];
-
-        // Spiele das Video ab
+        // Starte das Video ab dem Anfang
+        videoPlayer.Stop();
         videoPlayer.Play();
-
-        currentClipIndex = nextClipIndex;
-    }
-
-    public void PlayPreviousVideo()
-    {
-        int nextClipIndex = (currentClipIndex - 1 + videoClips.Length) % videoClips.Length;
-        CheckClipIndexBounds(nextClipIndex);
-
-        // Setze das nächste Video
-        videoPlayer.clip = videoClips[nextClipIndex];
-
-        // Spiele das Video ab
-        videoPlayer.Play();
-
-        currentClipIndex = nextClipIndex;
-    }
-
-    private void PlayCurrentVideo()
-    {
-        videoPlayer.clip = videoClips[currentClipIndex];
-
-        // Spiele das Video ab
-        videoPlayer.Play();
-    }
-
-    private void CheckClipIndexBounds(int clipIndex)
-    {
-        // Stelle sicher, dass der Index nicht über 21 oder unter 0 geht
-        if (clipIndex < 0)
-        {
-            clipIndex = 0;
-        }
-        else if (clipIndex > 21)
-        {
-            clipIndex = 21;
-        }
-    }
-
-    // Plus-Button-Methode
-    public void OnPlusButtonClicked()
-    {
-        PlayNextVideo();
-    }
-
-    // Minus-Button-Methode
-    public void OnMinusButtonClicked()
-    {
-        PlayPreviousVideo();
     }
 }

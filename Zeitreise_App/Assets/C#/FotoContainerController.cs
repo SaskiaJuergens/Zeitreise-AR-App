@@ -1,57 +1,61 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARSubsystems;
+using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
 
 public class FotoContainerController : MonoBehaviour
 {
-    public Renderer backgroundRenderer;
-    public Renderer personRenderer;
-    public Material[] backgroundMaterials;  // Array von Hintergrundmaterialien
-    public Material[] personMaterials;      // Array von Personenschichtmaterialien
-
-    private int currentIndex = 0;
-
-    // UI Buttons for controlling the materials
+    public GameObject PortraitPrefab; // Das Portrait-Prefab
+    public Transform FotoContainer; // Hier könntest du einen leeren GameObject-Container für die Fotos verwenden
     public Button plusButton;
     public Button minusButton;
 
+    private int currentIndex = 0;
+    private GameObject[] personSprites;
+
     void Start()
     {
-        // Setze das Start-Hintergrundmaterial
-        backgroundRenderer.material = backgroundMaterials[currentIndex];
+        // Initialisiere die Portraits
+        personSprites = new GameObject[25];
+        for (int i = 0; i < 25; i++)
+        {
+            personSprites[i] = Instantiate(PortraitPrefab, FotoContainer);
+            personSprites[i].SetActive(false);
+        }
 
-        // Setze das Start-Personenmaterial
-        personRenderer.material = personMaterials[currentIndex];
+        // Zeige das erste Portrait an
+        ZeigeAktuellesFoto();
 
         // Register button click events
         plusButton.onClick.AddListener(OnPlusButtonClicked);
         minusButton.onClick.AddListener(OnMinusButtonClicked);
     }
 
-    // Methode zum Wechseln des Hintergrundmaterials oder Personenmaterialien
-    public void ChangeMaterial(int increment)
-    {
-        currentIndex = (currentIndex + increment + Mathf.Max(backgroundMaterials.Length, personMaterials.Length)) % Mathf.Max(backgroundMaterials.Length, personMaterials.Length);
-
-        if (currentIndex < backgroundMaterials.Length)
-        {
-            backgroundRenderer.material = backgroundMaterials[currentIndex];
-        }
-
-        if (currentIndex < personMaterials.Length)
-        {
-            personRenderer.material = personMaterials[currentIndex];
-        }
-    }
-
     // Plus-Button-Methode
     public void OnPlusButtonClicked()
     {
-        ChangeMaterial(1);
+        currentIndex = (currentIndex + 1) % personSprites.Length;
+        ZeigeAktuellesFoto();
     }
 
     // Minus-Button-Methode
     public void OnMinusButtonClicked()
     {
-        ChangeMaterial(-1);
+        currentIndex = (currentIndex - 1 + personSprites.Length) % personSprites.Length;
+        ZeigeAktuellesFoto();
+    }
+
+    void ZeigeAktuellesFoto()
+    {
+        // Deaktiviere alle Portraits
+        foreach (var portrait in personSprites)
+        {
+            portrait.SetActive(false);
+        }
+
+        // Aktiviere das aktuelle Portrait
+        personSprites[currentIndex].SetActive(true);
     }
 }
