@@ -291,9 +291,9 @@ RectTransform:
   - {fileID: 1526343704}
   m_Father: {fileID: 1724069872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1632, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 142, y: 60}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &550406584
@@ -745,6 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TelefonContainer: {fileID: 5944509486113112169, guid: dda1732d63c65b44291500cf9163d76d, type: 3}
   FotoContainer: {fileID: 9052783125800188302, guid: f812d03294887a44ea301bb2265c52ed, type: 3}
+  VideoContainer: {fileID: 334697981901570247, guid: 72e0ea445fd499046a6287d853146f45, type: 3}
   ArPrefabs:
   - {fileID: 9052783125800188302, guid: f812d03294887a44ea301bb2265c52ed, type: 3}
   - {fileID: 334697981901570247, guid: 72e0ea445fd499046a6287d853146f45, type: 3}
@@ -1160,16 +1161,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026577994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 350}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 122161945}
   m_Father: {fileID: 1724069872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1599, y: 60}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -146, y: 60}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026577996
