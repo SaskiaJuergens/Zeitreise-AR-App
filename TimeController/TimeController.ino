@@ -43,6 +43,9 @@ Bounce button_minus;
 #define PIN_A 38
 #define PIN_B 39
 
+//const int buttonPin = 2;  // Пин, к которому подключена кнопка
+//Bounce debouncer = Bounce();  // Создание объекта для обработки дребезга контактов
+
 int count =0;
 unsigned long timestamp = 0;
 
@@ -68,7 +71,10 @@ static uint16_t cached_points_idx = 0;
 static int16_t *last_cached_point;
 
 void setup(void){
-  Serial.begin(9600); // or another baud rate
+  USBSerial.begin(9600); // or another baud rate
+  
+    pinMode(TFT_BLK, OUTPUT);
+    digitalWrite(TFT_BLK, 1);
 
     gfx->begin();
     gfx->fillScreen(BACKGROUND);
@@ -88,12 +94,10 @@ void setup(void){
     // init LCD constant
     w = gfx->width();
     h = gfx->height();
-    if (w < h)
-    {
+    if (w < h){
         center = w / 2;
     }
-    else
-    {
+    else{
         center = h / 2;
     }
     hHandLen = center * 3 / 8;
@@ -107,11 +111,14 @@ void setup(void){
     ss = conv2d(__TIME__ + 6);
 
     targetTime = ((millis() / 1000) + 1) * 1000;
+
+  //pinMode(38, INPUT_PULLUP); // Установка пина кнопки как вход с подтяжкой к питанию
+  //debouncer.attach(buttonPin); // Привязка объекта Bounce к пину
+  //debouncer.interval(50); // Установка интервала дребезга в 50 миллисекунд
 }
 
 void loop(){
     unsigned long cur_millis = millis();
-    //TSPoint touch = ts.getPoint();
     if (cur_millis >= targetTime)
     {
         targetTime += 1000;
@@ -138,7 +145,7 @@ void loop(){
 
     
     if(button_plus.fell()){ //drücken knopf
-    Serial.println("Button Plus Pressed");
+    USBSerial.println("Button Plus Pressed");
       //zeitpunkt speichern
       count ++;
       mm++;
@@ -149,7 +156,7 @@ void loop(){
       timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
     }
     if(button_minus.fell()){ //drücken knopf
-    Serial.println("Button Minus Pressed");
+    USBSerial.println("Button Minus Pressed");
       //zeitpunkt speichern
       count --;
       mm--;
@@ -159,7 +166,7 @@ void loop(){
       }
       timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
     }
-    //if(button_plus.rose()){ //wenn button losgelassen wird
+
     if(button_plus.read() == LOW && millis() > timestamp){ //während button gedrückt wird
       count++;
       mm++;
@@ -179,9 +186,9 @@ void loop(){
       timestamp = millis() + PRESS_INTERVAL;
     }
 
-    Serial.print("Count: "); Serial.println(count);
-    Serial.print("MM: "); Serial.println(mm);
-    Serial.print("HH: "); Serial.println(hh);
+    USBSerial.print("SS: "); USBSerial.println(ss);
+    USBSerial.print("MM: "); USBSerial.println(mm);
+    USBSerial.print("HH: "); USBSerial.println(hh);
 
 
     // Hier die restliche Uhr-Logik ausführen
@@ -244,9 +251,6 @@ void draw_roman_clock_mark(int16_t hour, int16_t outerR, int16_t innerR){
     gfx->setTextSize(2);
     gfx->setTextColor(MARK_COLOR);
     gfx->print(romanNumerals[hour]);
-
-    // Draw clock mark
-    //gfx->drawLine(x0, y0, x1, y1, MARK_COLOR);
 }
 
 void draw_round_clock_mark(int16_t innerR1, int16_t outerR1, int16_t innerR2, int16_t outerR2, int16_t innerR3, int16_t outerR3) {
