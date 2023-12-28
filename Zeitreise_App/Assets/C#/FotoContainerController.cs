@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARSubsystems;
@@ -13,16 +12,16 @@ public class FotoContainerController : MonoBehaviour
     public Button minusButton;
 
     private int currentIndex = 0;
-    private GameObject[] personSprites;
+    private List<GameObject> personSprites = new List<GameObject>();
 
     void Start()
     {
-        // Initialisiere die Portraits
-        personSprites = new GameObject[25];
+        // Initialize the personSprites list by cloning the PortraitPrefab
         for (int i = 0; i < 25; i++)
         {
-            personSprites[i] = Instantiate(PortraitPrefab, FotoContainer);
-            personSprites[i].SetActive(false);
+            GameObject portraitInstance = Instantiate(PortraitPrefab, FotoContainer);
+            portraitInstance.SetActive(false);
+            personSprites.Add(portraitInstance);
         }
 
         // Zeige das erste Portrait an
@@ -36,14 +35,14 @@ public class FotoContainerController : MonoBehaviour
     // Plus-Button-Methode
     public void OnPlusButtonClicked()
     {
-        currentIndex = (currentIndex + 1) % personSprites.Length;
+        currentIndex = (currentIndex + 1) % personSprites.Count;
         ZeigeAktuellesFoto();
     }
 
     // Minus-Button-Methode
     public void OnMinusButtonClicked()
     {
-        currentIndex = (currentIndex - 1 + personSprites.Length) % personSprites.Length;
+        currentIndex = (currentIndex - 1 + personSprites.Count) % personSprites.Count;
         ZeigeAktuellesFoto();
     }
 
