@@ -39,9 +39,10 @@ TouchScreen ts = TouchScreen(TS_CS, TS_IRQ, 0, 0, 0);
 
 Bounce button_plus;
 Bounce button_minus;
-
-#define PIN_A 38
-#define PIN_B 39
+#define b1 18
+#define b2 17
+//#define PIN_A 38
+//#define PIN_B 39
 
 //const int buttonPin = 2;  // Пин, к которому подключена кнопка
 //Bounce debouncer = Bounce();  // Создание объекта для обработки дребезга контактов
@@ -85,11 +86,12 @@ void setup(void){
 #endif
 
     //PullUp-Widerstand mit PIN_ verbinden, um bei nicht getückten zustand ein ende definieren 
-    button_plus.attach(PIN_A, INPUT_PULLUP);
-    button_minus.attach(PIN_B, INPUT_PULLUP);
-
-    button_plus.interval(50); //bounce sensivität
-    button_minus.interval(50);
+    pinMode(b1, INPUT);
+    pinMode(b2, INPUT);
+    //button_plus.attach(PIN_A, INPUT_PULLUP);
+    //button_minus.attach(PIN_B, INPUT_PULLUP);
+    //button_plus.interval(50); //bounce sensivität
+    //button_minus.interval(50);
 
     // init LCD constant
     w = gfx->width();
@@ -139,7 +141,33 @@ void loop(){
         }
     }
 
-    //Button pressed
+  // put your main code here, to run repeatedly:
+  bool data18 = digitalRead(b1);
+  bool data17 = digitalRead(b2);
+
+  if (data18 == 1) {
+    USBSerial.println("18 Taste gedrückt");
+      //zeitpunkt speichern
+      count ++;
+      mm++;
+      if(mm==60){
+        mm=0;
+        hh=hh+1;
+      }
+      timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
+  }
+  if (data17 == 1) {
+    USBSerial.println("17 Taste gedrückt");
+          //zeitpunkt speichern
+      count ++;
+      mm++;
+      if(mm==60){
+        mm=0;
+        hh=hh+1;
+      }
+      timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
+  }
+    /*//Button pressed
     button_plus.update();
     button_minus.update();
 
@@ -184,7 +212,7 @@ void loop(){
         hh=hh-1;
       }
       timestamp = millis() + PRESS_INTERVAL;
-    }
+    }*/
 
     USBSerial.print("SS: "); USBSerial.println(ss);
     USBSerial.print("MM: "); USBSerial.println(mm);
