@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638393708611698794
-    m_Hash: 39583579
+      ticks: 638394842827037225
+    m_Hash: 1904350859
   m_LockFileStatus:
     m_FilePath: C:/Users/49157/Documents/GitHub/Zeitreise-AR-App/Zeitreise_App/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638393708611775477
-    m_Hash: 1802431397
+      ticks: 638394842827048639
+    m_Hash: 2238655136
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
