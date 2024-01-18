@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class TelefonWechselScript : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class TelefonWechselScript : MonoBehaviour
     {
         // Initialisiere die Telefone
         GameObject telefonInstance = Instantiate(telefonPrefab.gameObject, transform);
+        Debug.Log(telefonInstance.transform.childCount);
 
         telefone = new GameObject[6];
         for (int i = 0; i < 6; i++)
@@ -31,9 +33,16 @@ public class TelefonWechselScript : MonoBehaviour
         // Zeige das erste Telefon an
         ZeigeAktuellesTelefon();
 
-        // Setze die Button-Handler
-        //plusButton.onClick.AddListener(WechsleTelefonPlus);
 
+
+        plusButton = GameObject.FindGameObjectWithTag("plusButton").GetComponent<Button>();
+        minusButton = GameObject.FindGameObjectWithTag("minusButton").GetComponent<Button>();
+
+        Debug.Log(plusButton);
+        Debug.Log(plusButton.onClick);
+
+        // Setze die Button-Handler
+        plusButton.onClick.AddListener(WechsleTelefonPlus);
         minusButton.onClick.AddListener(WechsleTelefonMinus);
 
     }

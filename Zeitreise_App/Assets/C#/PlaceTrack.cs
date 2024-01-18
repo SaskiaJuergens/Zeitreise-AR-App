@@ -59,6 +59,7 @@ public class PlaceTrack : MonoBehaviour
             {
                 Debug.Log("Telefon tracked");
                 prefabToInstantiate = TelefonContainer;
+                Debug.Log(prefabToInstantiate.transform.position);
             }
             else if (string.Equals(imageName, "Mario", StringComparison.OrdinalIgnoreCase))
             {
@@ -73,6 +74,8 @@ public class PlaceTrack : MonoBehaviour
             {
                 Debug.Log("No image recognized");
             }
+
+            Debug.Log(prefabToInstantiate);
 
             if (prefabToInstantiate != null && !_instantiatedPrefabs.ContainsKey(imageName))
             {
