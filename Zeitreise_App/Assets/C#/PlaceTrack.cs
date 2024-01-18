@@ -48,6 +48,7 @@ public class PlaceTrack : MonoBehaviour
         // Loop durch alle neuen erkannten Bilder
         foreach (var trackedImage in eventArgs.added)
         {
+            Debug.Log("Images added");
             // Hol den Namen des Referenzbildes
             var imageName = trackedImage.referenceImage.name;
 
@@ -56,15 +57,21 @@ public class PlaceTrack : MonoBehaviour
 
             if (string.Equals(imageName, "Telefon", StringComparison.OrdinalIgnoreCase))
             {
+                Debug.Log("Telefon tracked");
                 prefabToInstantiate = TelefonContainer;
             }
-            if (string.Equals(imageName, "Mario", StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(imageName, "Mario", StringComparison.OrdinalIgnoreCase))
             {
                 prefabToInstantiate = VideoContainer;
             }
             else if (string.Equals(imageName, "Portrait", StringComparison.OrdinalIgnoreCase))
             {
+                Debug.Log("Foto tracked");
                 prefabToInstantiate = FotoContainer;
+            }
+            else
+            {
+                Debug.Log("No image recognized");
             }
 
             if (prefabToInstantiate != null && !_instantiatedPrefabs.ContainsKey(imageName))
@@ -73,6 +80,7 @@ public class PlaceTrack : MonoBehaviour
                 var newPrefab = Instantiate(prefabToInstantiate, trackedImage.transform);
                 // Füge das erstellte Prefab zu unserem Array hinzu
                 _instantiatedPrefabs[imageName] = newPrefab;
+                Debug.Log("Debug wird instanziert");
             }
         }
         /*

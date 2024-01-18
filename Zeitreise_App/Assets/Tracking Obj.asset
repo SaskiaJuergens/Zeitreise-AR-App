@@ -28,21 +28,11 @@ MonoBehaviour:
     m_Name: Portrait
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
-      m_GuidLow: 5010527912870486121
-      m_GuidHigh: 2534876021595190186
-    m_SerializedTextureGuid:
-      m_GuidLow: 15718832198904110088
-      m_GuidHigh: 1324121195895895928
-    m_Size: {x: 0.2667772, y: 0.15}
-    m_SpecifySize: 1
-    m_Name: Mario
-    m_Texture: {fileID: 0}
-  - m_SerializedGuid:
       m_GuidLow: 4616187348640074151
       m_GuidHigh: 12999446195084856474
     m_SerializedTextureGuid:
-      m_GuidLow: 4824678261958325163
-      m_GuidHigh: 14975983041315643146
+      m_GuidLow: 16110532373203848430
+      m_GuidHigh: 15808583428604352314
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: Telefon

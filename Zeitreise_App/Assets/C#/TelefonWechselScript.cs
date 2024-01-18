@@ -18,10 +18,13 @@ public class TelefonWechselScript : MonoBehaviour
     void Start()
     {
         // Initialisiere die Telefone
+        GameObject telefonInstance = Instantiate(telefonPrefab.gameObject, transform);
+
         telefone = new GameObject[6];
         for (int i = 0; i < 6; i++)
         {
-            telefone[i] = Instantiate(telefonPrefab.transform.Find("Telefon_" + i.ToString()).gameObject, telefonContainer);
+            Debug.Log("inizalisiere Telefon" + i);
+            telefone[i] = telefonInstance.transform.GetChild(i).gameObject;
             telefone[i].SetActive(false);
         }
 
@@ -29,8 +32,10 @@ public class TelefonWechselScript : MonoBehaviour
         ZeigeAktuellesTelefon();
 
         // Setze die Button-Handler
-        plusButton.onClick.AddListener(WechsleTelefonPlus);
+        //plusButton.onClick.AddListener(WechsleTelefonPlus);
+
         minusButton.onClick.AddListener(WechsleTelefonMinus);
+
     }
 
     void WechsleTelefonPlus()
@@ -47,6 +52,7 @@ public class TelefonWechselScript : MonoBehaviour
 
     void ZeigeAktuellesTelefon()
     {
+        Debug.Log("Zeige aktuelles Telefon 1");
         // Deaktiviere alle Telefone
         foreach (var telefon in telefone)
         {
@@ -55,5 +61,6 @@ public class TelefonWechselScript : MonoBehaviour
 
         // Aktiviere das aktuelle Telefon
         telefone[aktuellesTelefonIndex].SetActive(true);
+        Debug.Log("Zeige aktuelles Telefon 2");
     }
 }
