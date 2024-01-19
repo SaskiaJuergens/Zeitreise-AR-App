@@ -35,13 +35,13 @@ public class TelefonWechselScript : MonoBehaviour
 
 
 
+        // Setze die Button-Handler
         plusButton = GameObject.FindGameObjectWithTag("plusButton").GetComponent<Button>();
         minusButton = GameObject.FindGameObjectWithTag("minusButton").GetComponent<Button>();
 
         Debug.Log(plusButton);
         Debug.Log(plusButton.onClick);
 
-        // Setze die Button-Handler
         plusButton.onClick.AddListener(WechsleTelefonPlus);
         minusButton.onClick.AddListener(WechsleTelefonMinus);
 

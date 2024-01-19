@@ -21,7 +21,7 @@ public class FotoContainerController : MonoBehaviour
         //personSprites.Add(portraitInstance);
 
         // Initialisiere die Telefone
-        GameObject portraitInstance = Instantiate(PortraitPrefab, transform);
+        GameObject portraitInstance = Instantiate(PortraitPrefab.gameObject, transform);
         Debug.Log(portraitInstance.transform.childCount);
         //personSprites = new GameObject[25];
         for (int i = 0; i < 25; i++)
@@ -29,7 +29,7 @@ public class FotoContainerController : MonoBehaviour
             Debug.Log("inizalisiere Foto" + i);
             personSprites.Add(portraitInstance.transform.GetChild(i).gameObject);
             personSprites[i].SetActive(false);
-           // personSprites.Add(portraitInstance);
+            //personSprites.Add(portraitInstance);
         }
 
 
@@ -44,6 +44,9 @@ public class FotoContainerController : MonoBehaviour
         // Zeige das erste Portrait an
         ZeigeAktuellesFoto();
 
+
+        plusButton = GameObject.FindGameObjectWithTag("plusButton").GetComponent<Button>();
+        minusButton = GameObject.FindGameObjectWithTag("minusButton").GetComponent<Button>();
         Debug.Log(plusButton);
         Debug.Log(plusButton.onClick);
         // Register button click events

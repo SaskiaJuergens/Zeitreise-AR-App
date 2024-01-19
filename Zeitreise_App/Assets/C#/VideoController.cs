@@ -17,11 +17,12 @@ public class VideoController : MonoBehaviour
     void Start()
     {
         // Initialisiere die Videos
+        GameObject videoObject = Instantiate(videoPrefab.gameObject, videoContainer);
+        VideoPlayer vp = videoObject.GetComponent<VideoPlayer>();
+
         videos = new GameObject[20];
         for (int i = 0; i < 20; i++)
         {
-            GameObject videoObject = Instantiate(videoPrefab, videoContainer);
-            VideoPlayer vp = videoObject.GetComponent<VideoPlayer>();
             videos[i] = videoObject;
             videoObject.SetActive(false);
 
@@ -46,6 +47,9 @@ public class VideoController : MonoBehaviour
         PlayCurrentVideo();
 
         // Setze die Button-Handler
+        plusButton = GameObject.FindGameObjectWithTag("plusButton").GetComponent<Button>();
+        minusButton = GameObject.FindGameObjectWithTag("minusButton").GetComponent<Button>();
+
         plusButton.onClick.AddListener(PlayNextVideo);
         minusButton.onClick.AddListener(PlayPreviousVideo);
     }
