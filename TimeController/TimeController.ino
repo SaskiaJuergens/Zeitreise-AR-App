@@ -159,11 +159,12 @@ void loop(){
   if (data17 == 1) {
     USBSerial.println("17 Taste gedrückt");
           //zeitpunkt speichern
-      count ++;
-      mm++;
-      if(mm==60){
-        mm=0;
-        hh=hh+1;
+      count --;
+      mm--;
+      if(mm==0){
+        mm=60;
+        hh=hh-1;
+        ss=ss-1;
       }
       timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
   }
