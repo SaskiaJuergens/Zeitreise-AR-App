@@ -16,20 +16,24 @@ public class FotoContainerController : MonoBehaviour
 
     void Start()
     {
-        //GameObject portraitInstance = Instantiate(PortraitPrefab, transform);
-        //portraitInstance.SetActive(false);
-        //personSprites.Add(portraitInstance);
-
         // Initialisiere die Telefone
         GameObject portraitInstance = Instantiate(PortraitPrefab.gameObject, transform);
         Debug.Log(portraitInstance.transform.childCount);
+
         //personSprites = new GameObject[25];
-        for (int i = 0; i < 25; i++)
+
+        if (portraitInstance.transform.childCount > 0)
         {
-            Debug.Log("inizalisiere Foto" + i);
-            personSprites.Add(portraitInstance.transform.GetChild(i).gameObject);
-            personSprites[i].SetActive(false);
-            //personSprites.Add(portraitInstance);
+            for (int i = 0; i < 25; i++)
+            {
+                Debug.Log("inizalisiere Foto" + i);
+                personSprites.Add(portraitInstance.transform.GetChild(i).gameObject);
+                personSprites[i].SetActive(false);
+                //personSprites.Add(portraitInstance);
+            }
+        } else
+        {
+            Debug.Log("Kein Child im PortraitPrefab");
         }
 
 
@@ -45,11 +49,11 @@ public class FotoContainerController : MonoBehaviour
         ZeigeAktuellesFoto();
 
 
+        // Register button click events
         plusButton = GameObject.FindGameObjectWithTag("plusButton").GetComponent<Button>();
         minusButton = GameObject.FindGameObjectWithTag("minusButton").GetComponent<Button>();
         Debug.Log(plusButton);
         Debug.Log(plusButton.onClick);
-        // Register button click events
         plusButton.onClick.AddListener(OnPlusButtonClicked);
         minusButton.onClick.AddListener(OnMinusButtonClicked);
     }

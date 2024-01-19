@@ -28,7 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,38 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613f61efbdf10a541b34a249e72ab30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundRenderer: {fileID: 0}
-  personRenderer: {fileID: 0}
-  backgroundSprites:
-  - {fileID: 21300000, guid: 4ee3b4544ee6298468ed1d1fba762298, type: 3}
-  - {fileID: 21300000, guid: 6fbc03f1f79a9bb4bb03cc5c8d9256e5, type: 3}
-  - {fileID: 21300000, guid: 297da25406cbcba4c95c94d3389b3892, type: 3}
-  - {fileID: 21300000, guid: ebda115ad10632445a4f628ad60cdc81, type: 3}
-  personSprites:
-  - {fileID: 21300000, guid: 020b3b01af442bb4bad8dc4779175939, type: 3}
-  - {fileID: 21300000, guid: cd9af5c897c21f3488a99df82d7fbbe4, type: 3}
-  - {fileID: 21300000, guid: 1af8bbb8ba63c264cb2c8b64ac7c05b6, type: 3}
-  - {fileID: 21300000, guid: bd9c97cf94042b04987c61a1de3c09a8, type: 3}
-  - {fileID: 21300000, guid: 34fcde4e193173c40802a430bc216688, type: 3}
-  - {fileID: 21300000, guid: 677c42f52211cc64daaca625b606775a, type: 3}
-  - {fileID: 21300000, guid: eb4b4f7a237fc9b4abf1bf359d46cce6, type: 3}
-  - {fileID: 21300000, guid: 05f880c2bfe2d5b4bac717ac5637f118, type: 3}
-  - {fileID: 21300000, guid: 2f20aa08c52f65d4c984a6e58eac68cf, type: 3}
-  - {fileID: 21300000, guid: 5c8dee857c7b8414988a7327a4f04a66, type: 3}
-  - {fileID: 21300000, guid: d3d88d1a8a8faab458aa44e00ee9a3d1, type: 3}
-  - {fileID: 21300000, guid: be2071daa2aaad847bd65e5d15e5b4ad, type: 3}
-  - {fileID: 21300000, guid: e0905c7caa25e794098b0d0f76f29f4e, type: 3}
-  - {fileID: 21300000, guid: 39917eee524f0d643859d31e868b396b, type: 3}
-  - {fileID: 21300000, guid: a040a936a1a4b5f44a3e796937f82586, type: 3}
-  - {fileID: 21300000, guid: 7cec7085e71fa5a4fbec7873c9824069, type: 3}
-  - {fileID: 21300000, guid: c316baffddab69949a39f036ce69ce4f, type: 3}
-  - {fileID: 21300000, guid: 808286afbaedca843a32fd2930478247, type: 3}
-  - {fileID: 21300000, guid: d7050ce9d614c5c4e8ca5cf2305ac736, type: 3}
-  - {fileID: 21300000, guid: 3148f11f778b0124abb78b8026aefc1b, type: 3}
-  - {fileID: 21300000, guid: 3fb867036a52ef1409e57fd5ffcce6a5, type: 3}
-  - {fileID: 21300000, guid: c01fdce0c59ee934580a4743271cac51, type: 3}
-  - {fileID: 21300000, guid: ff98fbea4fe562a4295af1d379d6438f, type: 3}
-  - {fileID: 21300000, guid: 5130be48f6ede1f4e99db7f4a84c6ef2, type: 3}
-  - {fileID: 21300000, guid: 01a451c428775f54ebc55b6fc189c880, type: 3}
+  PortraitPrefab: {fileID: 0}
+  FotoContainer: {fileID: 0}
   plusButton: {fileID: 0}
   minusButton: {fileID: 0}
