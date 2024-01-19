@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2667772, y: 0.2667772, z: 0.2667772}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5797613389568455947}
   m_Father: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b540fbfe9d99faa4ca5ae7e73e51030d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoPrefab: {fileID: 0}
+  videoPrefab: {fileID: 1254370451499935894, guid: 4474a888fab5fef44bcad703abe9ad73, type: 3}
   videoContainer: {fileID: 0}
   plusButton: {fileID: 0}
   minusButton: {fileID: 0}
@@ -80,7 +80,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1362801, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7924170372928805592}

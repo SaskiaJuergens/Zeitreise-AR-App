@@ -67,9 +67,8 @@ public class PlaceTrack : MonoBehaviour
             }
             else if (string.Equals(imageName, "Portrait", StringComparison.OrdinalIgnoreCase))
             {
-                Debug.Log("Foto tracked 1");
+                Debug.Log("Foto tracked");
                 prefabToInstantiate = FotoContainer;
-                Debug.Log("Foto tracked 2");
             }
             else
             {

@@ -1,7 +1,6 @@
 #include <Arduino_GFX_Library.h>
 #include <TouchScreen.h>
-#include <Bounce2.h> //merkt zustandsänderung und igrnoried schnelles bouncen
-//#include <BluetoothSerial.h> //Bluethooth libary
+#include <Bounce2.h> 
 
 //Chip ESP32 S3
 #define TFT_BLK 45
@@ -41,11 +40,6 @@ Bounce button_plus;
 Bounce button_minus;
 #define b1 18
 #define b2 17
-//#define PIN_A 38
-//#define PIN_B 39
-
-//const int buttonPin = 2;  // Пин, к которому подключена кнопка
-//Bounce debouncer = Bounce();  // Создание объекта для обработки дребезга контактов
 
 int count =0;
 unsigned long timestamp = 0;
@@ -88,10 +82,6 @@ void setup(void){
     //PullUp-Widerstand mit PIN_ verbinden, um bei nicht getückten zustand ein ende definieren 
     pinMode(b1, INPUT);
     pinMode(b2, INPUT);
-    //button_plus.attach(PIN_A, INPUT_PULLUP);
-    //button_minus.attach(PIN_B, INPUT_PULLUP);
-    //button_plus.interval(50); //bounce sensivität
-    //button_minus.interval(50);
 
     // init LCD constant
     w = gfx->width();
@@ -113,10 +103,6 @@ void setup(void){
     ss = conv2d(__TIME__ + 6);
 
     targetTime = ((millis() / 1000) + 1) * 1000;
-
-  //pinMode(38, INPUT_PULLUP); // Установка пина кнопки как вход с подтяжкой к питанию
-  //debouncer.attach(buttonPin); // Привязка объекта Bounce к пину
-  //debouncer.interval(50); // Установка интервала дребезга в 50 миллисекунд
 }
 
 void loop(){
@@ -141,7 +127,9 @@ void loop(){
         }
     }
 
-  // put your main code here, to run repeatedly:
+  // Button funktion
+  //plusButton = data18 -> mm+
+  //minusButton = data17 -> mm-
   bool data18 = digitalRead(b1);
   bool data17 = digitalRead(b2);
 
@@ -168,57 +156,15 @@ void loop(){
       }
       timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
   }
-    /*//Button pressed
-    button_plus.update();
-    button_minus.update();
 
-    
-    if(button_plus.fell()){ //drücken knopf
-    USBSerial.println("Button Plus Pressed");
-      //zeitpunkt speichern
-      count ++;
-      mm++;
-      if(mm==60){
-        mm=0;
-        hh=hh+1;
-      }
-      timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
-    }
-    if(button_minus.fell()){ //drücken knopf
-    USBSerial.println("Button Minus Pressed");
-      //zeitpunkt speichern
-      count --;
-      mm--;
-      if(mm==0){
-        mm=60;
-        hh=hh-1;
-      }
-      timestamp = millis() + LONG_PRESS;  //millis = Zeit seit software gestartet wurde
-    }
+    // USBSerial.print("SS: "); USBSerial.println(ss);
+    // USBSerial.print("MM: "); USBSerial.println(mm);
+    // USBSerial.print("HH: "); USBSerial.println(hh);
 
-    if(button_plus.read() == LOW && millis() > timestamp){ //während button gedrückt wird
-      count++;
-      mm++;
-      if(mm==60){
-        mm=0;
-        hh=hh+1;
-      }
-      timestamp = millis() + PRESS_INTERVAL;
-    }
-    if(button_minus.read() == LOW && millis() > timestamp){ //während button gedrückt wird
-      count--;
-      mm--;
-      if(mm==0){
-        mm=60;
-        hh=hh-1;
-      }
-      timestamp = millis() + PRESS_INTERVAL;
-    }*/
-
-    USBSerial.print("SS: "); USBSerial.println(ss);
-    USBSerial.print("MM: "); USBSerial.println(mm);
-    USBSerial.print("HH: "); USBSerial.println(hh);
-
+    //Wert von mm = Minute per bluetooth versenden
+    USBSerial.write(mm);
+    USBSerial.flush();
+ 
 
     // Hier die restliche Uhr-Logik ausführen
     sdeg = SIXTIETH_RADIAN * ((0.001 * (cur_millis % 1000)) + ss);
