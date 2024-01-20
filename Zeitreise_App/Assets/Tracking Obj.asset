@@ -41,9 +41,9 @@ MonoBehaviour:
       m_GuidLow: 5632989787788291132
       m_GuidHigh: 1804357041270789048
     m_SerializedTextureGuid:
-      m_GuidLow: 17398555028221496945
-      m_GuidHigh: 6769670260534894136
-    m_Size: {x: 0.2667772, y: 0.15}
+      m_GuidLow: 6576399690365838999
+      m_GuidHigh: 8289616441315870153
+    m_Size: {x: 0.2667772, y: 0.1319128}
     m_SpecifySize: 1
     m_Name: Mario
     m_Texture: {fileID: 0}

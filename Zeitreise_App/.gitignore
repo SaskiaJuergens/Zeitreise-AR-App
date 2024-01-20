@@ -78,6 +78,9 @@ Zeitreise_App/Library/Bee/artifacts/Android/d8kzr/libil2cpp.so
 Zeitreise_App/Library/Bee/artifacts/objcopy_5lmi/libil2cpp.dbg.so
 Zeitreise_App/Library/Bee/artifacts/objcopy_b9ry/libil2cpp.dbg.so
 
-Zeitreise_App/Libary/
-Zeitreise_App/Build/
+# Libary
+Libary/*
+
+# Builds
+Build/*
 

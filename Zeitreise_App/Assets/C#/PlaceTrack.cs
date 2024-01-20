@@ -18,7 +18,7 @@ public class PlaceTrack : MonoBehaviour
     // List of prefabs to instantiate - name of corresponding 2D images in reference library
     // GameObject could be Video or 3D object too
     // One of the GameObjects should respond to one of the tracked images
-    public GameObject[] ArPrefabs;
+    //public GameObject[] ArPrefabs;
 
     // Keep dictionary array of created prefabs
     private readonly Dictionary<string, GameObject> _instantiatedPrefabs = new Dictionary<string, GameObject>();
@@ -112,7 +112,12 @@ public class PlaceTrack : MonoBehaviour
         // on whether their corresponding image is currently being tracked
         foreach (var trackedImage in eventArgs.updated)
         {
-            _instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(trackedImage.trackingState == TrackingState.Tracking);
+            if (trackedImage.trackingState == TrackingState.Tracking)
+            {
+                _instantiatedPrefabs[trackedImage.referenceImage.name].transform.position = trackedImage.transform.position;
+            }
+
+                _instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(trackedImage.trackingState == TrackingState.Tracking);
         }
 
         // Wenn das AR-Subsystem aufhört, nach einem erkannten Bild zu suchen
